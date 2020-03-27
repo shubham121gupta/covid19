@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+
+<!-- Thanks for visiting here ,
+       hope you like the work!!
+            --- @shubham121gupta -->
+
+
 <html lang="en-US">
 
 <head>
@@ -17,74 +23,74 @@
     <title>COVID 19</title>
 
     <style>
-        
-    body,html{
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    background: #e74c3c !important;
-    }
-    .h-100 {
-    height: 50%!important;
-}
+        body,
+        html {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #e74c3c !important;
+        }
 
-    .searchbar{
-    margin-bottom: 400px;
-    margin-top: 100px;
-    height: 60px;
-    background-color: #353b48;
-    border-radius: 30px;
-    padding: 10px;
-    }
+        .h-100 {
+            height: 50% !important;
+        }
 
-    .search_input{
-    color: white;
-    border: 0;
-    outline: 0;
-    background: none;
-    width: 450px;
-    caret-color:transparent;
-    line-height: 40px;
-    /* transition: width 0.4s linear; */
-    }
+        .searchbar {
+            margin-bottom: 400px;
+            margin-top: 100px;
+            height: 60px;
+            background-color: #353b48;
+            border-radius: 30px;
+            padding: 10px;
+        }
 
-    /* .searchbar:hover > .search_input{
+        .search_input {
+            color: white;
+            border: 0;
+            outline: 0;
+            background: none;
+            width: 370px;
+            caret-color: transparent;
+            line-height: 40px;
+            /* transition: width 0.4s linear; */
+        }
+
+        /* .searchbar:hover > .search_input{
     padding: 0 10px;
     width: 450px;
     caret-color:red;
     /* transition: width 0.4s linear; */
-    /* } */ */
+        /* } */
+        */ .searchbar:hover>.search_icon {
+            background: white;
+            color: #e74c3c;
+        }
 
-    .searchbar:hover > .search_icon{
-    background: white;
-    color: #e74c3c;
-    }
+        .search_icon {
+            height: 40px;
+            width: 40px;
+            float: right;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+        }
 
-    .search_icon{
-    height: 40px;
-    width: 40px;
-    float: right;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    color:white;
-    text-decoration:none;
-    }
+        h1 {
+            padding-top: 2ch;
+            text-align: center;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-style: normal;
+        }
 
-    h1 {
-        padding-top: 2ch;
-        text-align: center;
-        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        font-style: normal;
-    }
-
-    footer {
-        text-align: center;
-        text-align-last: center;
-        padding-top: 3ch;
-    }
+        footer {
+            text-align: center;
+            text-align-last: center;
+            padding-top: 30ch;
+        }
     </style>
 </head>
 
@@ -105,26 +111,16 @@
                 success: function (data) {
                     stats = data.data.covid19Stats[0];
                     console.log(stats);
-
-                
-           
-            var html = "";
-            html += '<center><h1> Country :'+stats.country+'</h1></center>';
-            html += '<center><h3> Last Update :'+stats.lastUpdate+'</h3></center>';
-            html += '<center><h3> Confirmed :'+stats.confirmed+'</h3></center>';
-            html += '<center><h3> Deaths :'+stats.deaths+'</h3></center>';
-            html += '<center><h3> Recovered :'+stats.recovered+'</h3></center>';
-
-
-
-          
-          document.getElementById("stats").innerHTML=html;
-
-
-
-        document.getElementById("stats2").innerHTML = `
+                    var html = "";
+                    html += '<center><h1> Country :' + stats.country + '</h1></center>';
+                    html += '<center><h3> Last Update :' + stats.lastUpdate + '</h3></center>';
+                    html += '<center><h3> Confirmed :' + stats.confirmed + '</h3></center>';
+                    html += '<center><h3> Deaths :' + stats.deaths + '</h3></center>';
+                    html += '<center><h3> Recovered :' + stats.recovered + '</h3></center>';
+                    document.getElementById("stats").innerHTML = html;
+                    document.getElementById("stats2").innerHTML = `
       ${stats.map(function (prod) {
-            return `
+                        return `
         <div class="col-sm-5">
           <div class = "">
             <h2>  ${info.country} </h2>
@@ -132,18 +128,16 @@
         </a>
         </div>       
               `
-          }).join('')}
+                    }).join('')}
       `
                 }
             });
         }
-
         function init() {
             var input = document.getElementById('inputCountry');
             var autocomplete = new google.maps.places.Autocomplete(input);
         }
         google.maps.event.addDomListener(window, 'load', init);
-
     </script>
     <!-- <div class="search">
         <input type="input" class="inputCountry" id="inputCountry">
@@ -154,13 +148,18 @@
         <div class="d-flex justify-content-center h-100">
             <div class="searchbar">
                 <input class="search_input" type="text" id="inputCountry" name="" placeholder="Search...">
-                <a href="#" onclick="covid19()" class="search_icon"><i class="fas fa-search"></i></a>
+                <!-- <br>
+                <br>
+                <a href="#" onclick="covid19()" class="search_icon"><i class="fas fa-search"></i></a> -->
             </div>
         </div>
+        <div class="d-flex justify-content-center h-100">
+            <a href="#" onclick="covid19()" class="search_icon">Search &nbsp; </a>
+            </a>
+        </div>
     </div>
-<div id="stats"></div>
-<div id="stats2"></div>
-<footer> &copy; SG Group India Ventue</footer>
+    <div id="stats"></div>
+    <div id="stats2"></div>
+    <footer> &copy; SG Group India Ventue</footer>
 </body>
-
 </html>
