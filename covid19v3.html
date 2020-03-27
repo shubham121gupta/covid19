@@ -93,14 +93,17 @@
         <div id="table" class="align-items: center;">
             <table class="table">
                 <table class="table">
-                    <caption>Last Updated :  <p id="data5"></p></caption>
+                    <caption>Today's cases :  <p id="data5"></p></caption>
+                    <caption>Today's deaths :  <p id="data7"></p></caption>
+
                     <thead>
                       <tr>
                         <th scope="col">#</th>
                         <th scope="col">Country</th>
-                        <th scope="col">Confirmed</th>
+                        <th scope="col">Cases</th>
                         <th scope="col">Deaths</th>
                         <th scope="col">Recovered</th>
+                        <th scope="col">Active</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -110,6 +113,7 @@
                         <td id="data2">-</td>
                         <td id="data3">-</td>
                         <td id="data4">-</td>
+                        <td id="data6">-</td>
                       </tr>
                       </tr>
                     </tbody>
@@ -395,7 +399,7 @@
             const city = name.charAt(0).toUpperCase() + name.slice(1)
             console.log(val1);
             $.ajax({
-                url: "https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/stats?country=" + city,
+                url: "https://corona.lmao.ninja/countries/" + city,
                 method: 'Get',
                 headers: {
                     "x-rapidapi-host": "covid-19-coronavirus-statistics.p.rapidapi.com",
@@ -403,18 +407,23 @@
                 },
                 cache: false,
                 success: function (data) {
-                    console.log(data.data.covid19Stats[0]);
-                    var product1 = data.data.covid19Stats[0];
+                    console.log(data);
+                    // console.log(data.data.covid19Stats[0]);
+                    // var product1 = data.data.covid19Stats[0];
                     var output = document.getElementById("data1");
-                    output.innerHTML = product1.country;
+                    output.innerHTML = data.country;
                     var output = document.getElementById("data2");
-                    output.innerHTML = product1.confirmed;
+                    output.innerHTML = data.cases;
                     var output = document.getElementById("data3");
-                    output.innerHTML = product1.deaths;
+                    output.innerHTML = data.deaths;
                     var output = document.getElementById("data4");
-                    output.innerHTML = product1.recovered;
+                    output.innerHTML = data.recovered;
                     var output = document.getElementById("data5");
-                    output.innerHTML = product1.lastUpdate;
+                    output.innerHTML = data.todayCases;
+                    var output = document.getElementById("data6");
+                    output.innerHTML = data.active;
+                    var output = document.getElementById("data7");
+                    output.innerHTML = data.todayDeaths;
                 }
             });
         }
