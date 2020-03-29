@@ -64,6 +64,58 @@
     </style>
 </head>
 <body onload="onloadTable()">
+
+    <script>
+        function init() {
+            var input = document.getElementById('myInput');
+            var autocomplete = new google.maps.places.Autocomplete(input);
+        }
+        google.maps.event.addDomListener(window, 'load', init);
+        var val1;
+        function covid19() {
+            val1 = $('#myInput').val();
+            const name = val1
+            const city = name.charAt(0).toUpperCase() + name.slice(1)
+            console.log(val1);
+            $.ajax({
+                url: "https://corona.lmao.ninja/countries/" + city,
+                method: 'Get',
+                headers: {
+                    "x-rapidapi-host": "covid-19-coronavirus-statistics.p.rapidapi.com",
+                    "x-rapidapi-key": "9ed427691amshd45ae4af40d3028p1b78f2jsnd5bc2b289e77"
+                },
+                cache: false,
+                success: function (data) {
+                    console.log(data);
+                    // console.log(data.data.covid19Stats[0]);
+                    // var product1 = data.data.covid19Stats[0];
+                    var output = document.getElementById("data1");
+                    output.innerHTML = data.country;
+                    var output = document.getElementById("data2");
+                    output.innerHTML = data.cases;
+                    var output = document.getElementById("data3");
+                    output.innerHTML = data.deaths;
+                    var output = document.getElementById("data4");
+                    output.innerHTML = data.recovered;
+                    var output = document.getElementById("data5");
+                    output.innerHTML = data.todayCases;
+                    var output = document.getElementById("data6");
+                    output.innerHTML = data.active;
+                    var output = document.getElementById("data7");
+                    output.innerHTML = data.todayDeaths;
+                }
+            });
+        }
+        function onloadTable() {
+            document.getElementById("table").style.display = 'none';
+        }
+        function onclickTable() {
+            document.getElementById("table").style.display = 'block';
+        }
+</script>
+
+
+
     <div class="jumbotron text-center" style="margin-bottom:0">
         <h1>COVID - 19</h1>
         <p>Live updated cases of every country</p>
@@ -128,6 +180,15 @@
     </div><br><br><br><br>
     <div id="dataShow"></div>
     </div><br><br><br><br>
+        <div class="footer1">
+        <div class="container-fluid bg-3 text-center">
+            <div class="row">
+                <div class="col-sm-12">
+                    <a href="https://www.phonepe.com/100crorepledge/index.html"><img alt="Phonepe Donation" placeholder="Hey" src="https://website.phonepe.com/images/backgrounds/home/pledge-banner-v2.png"
+                        class="img-responsive margin" style="width:100%" alt="Image"></a>
+            </div>
+        </div>
+    </div>
     </div><br><br><br><br>
     <div class="footer1">
         <div class="container-fluid bg-3 text-center">
@@ -143,53 +204,6 @@
         <p>COVID-19 &copy; Shubham Gupta</p>
     </div>
 
-    <script>
-        function init() {
-            var input = document.getElementById('myInput');
-            var autocomplete = new google.maps.places.Autocomplete(input);
-        }
-        google.maps.event.addDomListener(window, 'load', init);
-        var val1;
-        function covid19() {
-            val1 = $('#myInput').val();
-            const name = val1
-            const city = name.charAt(0).toUpperCase() + name.slice(1)
-            console.log(val1);
-            $.ajax({
-                url: "https://corona.lmao.ninja/countries/" + city,
-                method: 'Get',
-                headers: {
-                    "x-rapidapi-host": "covid-19-coronavirus-statistics.p.rapidapi.com",
-                    "x-rapidapi-key": "9ed427691amshd45ae4af40d3028p1b78f2jsnd5bc2b289e77"
-                },
-                cache: false,
-                success: function (data) {
-                    console.log(data);
-                    // console.log(data.data.covid19Stats[0]);
-                    // var product1 = data.data.covid19Stats[0];
-                    var output = document.getElementById("data1");
-                    output.innerHTML = data.country;
-                    var output = document.getElementById("data2");
-                    output.innerHTML = data.cases;
-                    var output = document.getElementById("data3");
-                    output.innerHTML = data.deaths;
-                    var output = document.getElementById("data4");
-                    output.innerHTML = data.recovered;
-                    var output = document.getElementById("data5");
-                    output.innerHTML = data.todayCases;
-                    var output = document.getElementById("data6");
-                    output.innerHTML = data.active;
-                    var output = document.getElementById("data7");
-                    output.innerHTML = data.todayDeaths;
-                }
-            });
-        }
-        function onloadTable() {
-            document.getElementById("table").style.display = 'none';
-        }
-        function onclickTable() {
-            document.getElementById("table").style.display = 'block';
-        }
-    </script>
+
 </body>
 </html>
