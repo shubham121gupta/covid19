@@ -121,6 +121,11 @@
         function onclickTable() {
             document.getElementById("table").style.display = 'block';
         }
+        function nKorea() {
+            if (val1 == "North korea" || "north korea"){
+                alert("No info about 'North Korea'");
+            }
+        }
 </script>
 
 
@@ -154,7 +159,7 @@
     <br><br><br>
     <div class="container-fluid bg-1 text-center" id="countryDD">
         <input type="text" placeholder="Search for country" id="myInput" onkeyup="filterFunction()">
-        <button type="button" onclick="covid19(),onclickTable()" class="btn btn-info">Info</button>
+        <button type="button" onclick="covid19(),onclickTable(),nKorea()" class="btn btn-info">Info</button>
         </br><br><br>
         <div id="table" class="align-items: center;">
             <table class="table">
