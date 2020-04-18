@@ -87,7 +87,7 @@
             const city = name.charAt(0).toUpperCase() + name.slice(1)
             console.log(val1);
             $.ajax({
-                url: "https://corona.lmao.ninja/countries/" + city,
+                url: "https://corona.lmao.ninja/v2/countries/" + city,
                 method: 'Get',
                 headers: {
                     "x-rapidapi-host": "covid-19-coronavirus-statistics.p.rapidapi.com",
